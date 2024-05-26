@@ -29,6 +29,13 @@ public class GeneralUser {
     }
 
     // Setters
+
+    // NOTE: This setter is ONLY for testing purposes
+    public boolean setGeneralUserId(int generalUserId) {
+        this.generalUserId = generalUserId;
+        return true;
+    }
+
     public boolean setName(String name) {
         if (name == null) {
             return false;

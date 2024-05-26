@@ -20,10 +20,10 @@ public class Registration {
 
     public Registration(PlannedEvent plannedEvent, GeneralUser generalUser) {
         if (!setPlannedEvent(plannedEvent)) {
-            throw new IllegalArgumentException("Invalid planned event");
+            throw new RuntimeException("Invalid planned event");
         }
         if (!setGeneralUser(generalUser)) {
-            throw new IllegalArgumentException("Invalid general user");
+            throw new RuntimeException("Invalid general user");
         }
     }
 
@@ -41,6 +41,13 @@ public class Registration {
     }
 
     // Setters
+
+    // NOTE: This setter is ONLY for testing purposes
+    public boolean setRegistrationId(int registrationId) {
+        this.registrationId = registrationId;
+        return true;
+    }
+
     public boolean setPlannedEvent(PlannedEvent plannedEvent) {
         if (plannedEvent == null) {
             return false;

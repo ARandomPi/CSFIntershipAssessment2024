@@ -1,6 +1,8 @@
 package project.event.model;
 
 import jakarta.persistence.*;
+import org.springframework.http.HttpStatus;
+import project.event.exception.EventRegistrationAppException;
 
 import java.util.GregorianCalendar;
 
@@ -25,7 +27,7 @@ public class PlannedEvent {
     public PlannedEvent(EventManager eventManager, String eventName, String description,
                         String location, GregorianCalendar date) {
         if (!setEventManager(eventManager)) {
-            throw new IllegalArgumentException("Invalid event manager");
+            throw new RuntimeException("Invalid event manager");
         }
         this.eventName = eventName;
         this.description = description;
@@ -59,7 +61,14 @@ public class PlannedEvent {
     }
 
     // Setters
-    public boolean setName(String name) {
+
+    // NOTE: This setter is ONLY for testing purposes
+    public boolean setPlannedEventId(int plannedEventId) {
+        this.plannedEventId = plannedEventId;
+        return true;
+    }
+
+    public boolean setPlannedEventName(String name) {
         this.eventName = name;
         return true;
     }
