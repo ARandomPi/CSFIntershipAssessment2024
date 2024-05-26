@@ -1,0 +1,39 @@
+@startuml DomainModel
+title Event Registration System
+skinparam linetype ortho
+hide methods
+top to bottom direction
+
+package project.event {
+
+    class Registration {
+        int registrationId
+    }
+
+    class GeneralUser {
+        int userId
+        String name
+    }
+
+    class EventManager {
+
+    }
+
+    class PlannedEvent {
+        int eventId
+        String name
+        String description
+        Date date
+        String location
+    }
+
+    'Associations
+
+    EventManager --|> GeneralUser
+    PlannedEvent "*" -> "1" EventManager
+    Registration "1" --> "1" GeneralUser
+    Registration "1" -> "1" PlannedEvent
+
+}
+
+@enduml
